@@ -1,0 +1,25 @@
+.cart-block__icon{
+    width: 24px;
+    height: 24px;
+    background-image: url('../../assets/icons/cart.svg');
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.cart-block{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.cart-block__total-price{
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
