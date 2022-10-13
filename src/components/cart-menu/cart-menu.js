@@ -4,6 +4,7 @@ import {CartItem} from '../cart-item'
 import './cart-menu.css'
 import {useDispatch} from "react-redux";
 import {clearCart} from "../../redux/cart/actions";
+import {Button} from "../ui/buttons";
 
 export const CartMenu = ({items, onClick}) => {
 
@@ -27,18 +28,18 @@ dispatch(clearCart())
 									<span>Итого:</span>
 									<span>{calcTotal(items)} руб.</span>
 								</div>
-								<button
-										className='btn-order'
+								<Button
+										className='btn btn--primary'
 										onClick={onClick}
 								>
 									Оформить заказ
-								</button>
-								<button
-										className='btn-order'
+								</Button>
+								<Button
+										className='btn btn--primary'
 										onClick={handleRemove}
 								>
 									Очистить корзину
-								</button>
+								</Button>
 							</div>
 							: null
 				}

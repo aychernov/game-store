@@ -2,9 +2,9 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {calcTotal, enumerate} from "../../components/utils";
 import OrderItem from "../../components/order-item/order-item";
-import './order-page.css'
 import {clearCart} from "../../redux/cart/actions";
 import {Button} from "../../components/ui/buttons";
+import './order-page.css'
 
 export const OrderPage = () => {
 const dispatch = useDispatch()
@@ -23,14 +23,14 @@ const dispatch = useDispatch()
 				</div>
 				<div className="order-page__right">
 					<div className="order-page__total-price">
-						<span> {items.length} { enumerate(items.length, ['товар', 'товара', 'товаров'])} на сумму {calcTotal(items)} руб. </span>
+						<span>У вас в корзине {items.length} { enumerate(items.length, ['товар', 'товара', 'товаров'])} на сумму {calcTotal(items)} руб. </span>
 					</div>
+					<Button
+							onClick={handleRemove}
+							className={'btn btn--primary'}>
+						Очистить корзину
+					</Button>
 				</div>
-				<Button
-						onClick={handleRemove}
-						className={'btn btn--secondary'}>
-					Clear Cart
-				</Button>
 			</div>
 	);
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {GameCover} from "../game-cover";
+import {removeFromCart} from "../../redux/cart/actions";
 import './order-item.css'
-import {clearCart, removeFromCart} from "../../redux/cart/actions";
 
 const OrderItem = ({game}) => {
 

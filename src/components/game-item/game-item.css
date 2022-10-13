@@ -7,7 +7,9 @@
     border-radius: 15px;
     cursor: pointer;
     position: relative;
+    transition: ease-out .5s;
 }
+
 
 .game-item:not(:last-child){
     margin-bottom: 30px;
@@ -37,5 +39,10 @@
 .game-item__buy{
     position: absolute;
     right: 0;
-    bottom: -12px;
+    bottom: 5px;
+}
+
+.game-item:hover{
+    transition: ease-out .5s;
+    transform: scale(1.03);
 }

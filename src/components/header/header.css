@@ -16,7 +16,16 @@
 .header__store-title{
     text-decoration: none;
     font-size: 24px;
-    font-weight: bold
+    font-weight: bold;
+    margin-right: 15px;
+    transition: ease-out .5s;
+
+}
+
+.header__store-title:hover{
+    transition: ease-out .5s;
+    color: #c7a4a4;
+
 }
 
 .header__cart-btn-wrapper{

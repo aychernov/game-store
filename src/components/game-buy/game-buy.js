@@ -27,7 +27,7 @@ export const GameBuy = ({game}) => {
 				<button
 						onClick={handleClick}
 						className='btn btn--primary'>
-					{isItemInCart ? 'Remove from busket' : 'В корзину'}
+					{isItemInCart ? 'Убрать из корзины' : 'В корзину'}
 				</button>
 			</div>
 	);

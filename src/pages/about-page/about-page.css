@@ -1,0 +1,15 @@
+.about-page__img{
+    background-image: url('../../assets/images/aston-dev.gif');
+    background-position: center center;
+    width: 100%;
+    height: 60vh;
+}
+
+.about-page__description{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
