@@ -5,7 +5,7 @@ export const CartItem = ({
 		title,
 		price,
 		id
-												 }) => {
+}) => {
 	return (
 			<div className='cart-item'>
 				<span>{title}</span>

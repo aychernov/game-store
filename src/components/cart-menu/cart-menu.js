@@ -2,8 +2,17 @@ import React from 'react';
 import {calcTotal} from "../utils";
 import {CartItem} from '../cart-item'
 import './cart-menu.css'
+import {useDispatch} from "react-redux";
+import {clearCart} from "../../redux/cart/actions";
 
 export const CartMenu = ({items, onClick}) => {
+
+	const dispatch = useDispatch()
+
+	const handleRemove = () => {
+dispatch(clearCart())
+	}
+
 	return (
 			<div className='cart-menu'>
 				<div className="cart-menu__games-list">
@@ -22,7 +31,13 @@ export const CartMenu = ({items, onClick}) => {
 										className='btn-order'
 										onClick={onClick}
 								>
-									Get Order
+									Оформить заказ
+								</button>
+								<button
+										className='btn-order'
+										onClick={handleRemove}
+								>
+									Очистить корзину
 								</button>
 							</div>
 							: null

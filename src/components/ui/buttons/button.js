@@ -4,9 +4,10 @@ import './button.css'
 export const Button = ({
 		onClick,
 		children,
+		className
 											 }) => {
 	return (
-			<button className='btn btn--primary' onClick={onClick}>
+			<button className={className} onClick={onClick}>
 				{children}
 			</button>
 	);

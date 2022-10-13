@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToCart, increaseBucketPrice, removeFromCart} from "../../redux/cart/actions";
 
 export const GameBuy = ({game}) => {
-	const items = useSelector(state => state.busket)
+	const items = useSelector(state => state.shoppingReducer.busket)
 	const isItemInCart = items.some(item => item.id === game.id)
 
 	const dispatch = useDispatch()

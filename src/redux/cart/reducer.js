@@ -1,4 +1,4 @@
-import {ADD_TO_CART, INCREASE_BUCKET_PRICE, REMOVE_FROM_CART} from "./actionsTypes";
+import {ADD_TO_CART, CLEAR_CART, INCREASE_BUCKET_PRICE, REMOVE_FROM_CART} from "./actionsTypes";
 
 const initialState = {gameInfo:
 			[
@@ -61,7 +61,6 @@ const initialState = {gameInfo:
 	priceBusket: 0
 }
 
-
 const ShoppinReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TO_CART:
@@ -80,8 +79,14 @@ const ShoppinReducer = (state = initialState, action) => {
 				...state,
 				priceBusket: state.priceBusket + action.payload
 			}
+		case CLEAR_CART:
+			return {
+				...state,
+				busket: [],
+			}
 		default:
 			return state;
 	}
 };
+
 export {ShoppinReducer};

@@ -1,0 +1,10 @@
+.remove-icon{
+    width: 25px;
+    height: 25px;
+    background-image: url('../../assets/icons/remove.svg');
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
