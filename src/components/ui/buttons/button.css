@@ -5,6 +5,8 @@
     padding: 5px;
     cursor: pointer;
     margin: 0px 5px;
+    transition: ease-out .5s;
+
 }
 
 .btn--primary {
@@ -22,3 +24,15 @@
 .btn--medium{
     font-size: 18px;
 }
+
+.btn--login{
+    background-color: #82ad47;
+    font-size: 18px;
+    padding: 10px 40px !important;
+    margin: 10px;
+}
+
+.btn--login:active{
+    transform: scale(.9);
+}
+

@@ -1,2 +1,7 @@
 export const SET_CURRENT_GAME = 'SET_CURRENT_GAME';
+export const SET_USER_PASSWORD = 'SET_USER_PASSWORD';
+export const SET_USER_LOGIN = 'SET_USER_LOGIN';
+export const SET_USER_LOGGED = 'SET_USER_LOGGED';
+
+
 

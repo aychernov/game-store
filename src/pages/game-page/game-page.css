@@ -16,3 +16,32 @@
     justify-content: flex-end;
     margin-top: 20px;
 }
+
+
+.textarea{
+    display: block;
+    font-size: 13px;
+    color: rgb(2, 180, 112);
+    padding: 3px;
+}
+textarea:invalid[focused='true']{
+    border:  1px solid red;
+}
+
+textarea:invalid[focused='true'] ~ span {
+    display: block;
+}
+
+.input{
+    display: block;
+    font-size: 13px;
+    color: rgb(2, 180, 112);
+    padding: 3px;
+}
+input:invalid[focused='true']{
+    border:  1px solid red;
+}
+
+input:invalid[focused='true'] ~ span {
+    display: block;
+}

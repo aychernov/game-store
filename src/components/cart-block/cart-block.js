@@ -11,8 +11,6 @@ export const CartBlock = () => {
 	const navigate = useNavigate()
 
 	const items = useSelector(state => state.shoppingReducer.busket)
-	// const priceBucket = useSelector(state => state.priceBusket)
-	// const counterBucket = useSelector(state => state.shoppingReducer.busket.length)
 	const totalPrice = calcTotal(items)
 
 	const handleClick = useCallback(() => {
@@ -23,7 +21,6 @@ export const CartBlock = () => {
 	return (
 			<div className='cart-block'>
 				<ItemsInCart quantity={items.length}/>
-				{/*<span>Count: {counterBucket}</span>*/}
 				<div
 						className="cart-block__icon"
 						onClick={() => setIsCartMenuVisible(!IsCartMenuVisible)}>

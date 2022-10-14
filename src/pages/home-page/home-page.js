@@ -7,10 +7,12 @@ import {useSelector} from 'react-redux'
 // const GAMES = []
 
 
+
 export const HomePage = () => {
 	const games = useSelector(state => state.shoppingReducer.gameInfo)
+
 	return (
-			<div className='home-page'>
+				<div className='home-page'>
 				{games.map(game => <GameItem game={game} key={game.id}/>)}
 			</div>
 	);

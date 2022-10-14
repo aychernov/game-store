@@ -1,9 +1,13 @@
 import React from 'react';
-import './game-buy.css'
+import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, increaseBucketPrice, removeFromCart} from "../../redux/cart/actions";
+import './game-buy.css'
 
 export const GameBuy = ({game}) => {
+
+	const {userAuth} = useSelector(state => state.AuthReducer)
+
 	const items = useSelector(state => state.shoppingReducer.busket)
 	const isItemInCart = items.some(item => item.id === game.id)
 
@@ -24,11 +28,13 @@ export const GameBuy = ({game}) => {
 	return (
 			<div className='game-buy'>
 				<span className='game-buy__price'>{game.price} руб.</span>
-				<button
+				{userAuth ? <button
 						onClick={handleClick}
 						className='btn btn--primary'>
 					{isItemInCart ? 'Убрать из корзины' : 'В корзину'}
 				</button>
+				:  <Link className='login-link' to="/login"> <br/> Авторизуйтесь для покупок! :P</Link>}
+
 			</div>
 	);
 };

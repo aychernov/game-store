@@ -1,9 +1,24 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {CartBlock} from "../cart-block/cart-block";
 import './header.css'
+import {useDispatch, useSelector} from "react-redux";
+import {authUser} from "../../redux/games/actions";
 
 export const Header = () => {
+	const {userAuth} = useSelector(state => state.AuthReducer)
+
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+
+	const logOutHandle = (e) => {
+		e.preventDefault()
+		if (userAuth === true) {
+			dispatch(authUser(false))
+			navigate('/')
+		}
+	}
+
 	return (
 			<div className='header'>
 			<div className="wrapper">
@@ -11,7 +26,11 @@ export const Header = () => {
 				<Link to='/about' className='header__store-title'>О магазине</Link>
 			</div>
 				<div className="wrapper header__cart-btn-wrapper">
-					<CartBlock/>
+					{userAuth ? <Link
+							onClick={logOutHandle}
+							to='/about'
+							className='header__store-title'>Выход</Link> : null }
+					{ userAuth ? <CartBlock/> : null}
 				</div>
 			</div>
 	);
