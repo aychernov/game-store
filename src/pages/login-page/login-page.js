@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {authUser, userLoginAction, userPass} from "../../redux/games/actions";
+import {authAdmin, authUser, userLoginAction, userPass,} from "../../redux/games/actions";
 import {useNavigate} from "react-router-dom";
 import './login-page.css'
 import {Button} from "../../components/ui/buttons";
@@ -8,7 +8,6 @@ import {Button} from "../../components/ui/buttons";
 export const LoginPage = () => {
 
 	const {userLogin, userPassword} = useSelector(state => state.AuthReducer)
-	// console.log(userAuth, userLogin, userPassword)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const [error, setError] = useState(null)
@@ -17,9 +16,14 @@ export const LoginPage = () => {
 		e.preventDefault()
 		if (userLogin === 'admin' && userPassword === 'admin') {
 			dispatch(authUser(true))
-
+			dispatch(authAdmin(true))
 			navigate('/')
-		} else {
+		} else if(userLogin === 'user' && userPassword === 'user'){
+			dispatch(authUser(true))
+			dispatch(authAdmin(false))
+			navigate('/')
+		}
+			else {
 			dispatch(authUser(false))
 			setError('Данные не верные!')
 		}

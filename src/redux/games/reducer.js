@@ -1,4 +1,4 @@
-import {SET_CURRENT_GAME, SET_USER_LOGGED, SET_USER_LOGIN, SET_USER_PASSWORD} from "./actionsTypes";
+import {SET_ADMIN_LOGGED, SET_CURRENT_GAME, SET_USER_LOGGED, SET_USER_LOGIN, SET_USER_PASSWORD} from "./actionsTypes";
 
 
 const gameReducerState = {
@@ -10,6 +10,7 @@ const authorizationInitState = {
 	userAuth: false,
 	userLogin: '',
 	userPassword: '',
+	isAdmin: false
 }
 
 
@@ -27,6 +28,8 @@ export const GameReducer = (state = gameReducerState, action) => {
 
  export const AuthorizationReducer  = (state = authorizationInitState,action) => {
 	switch(action.type){
+		case SET_ADMIN_LOGGED:
+			return {...state, isAdmin: action.payload}
 		case SET_USER_LOGGED:
 			return {...state, userAuth: action.payload}
 		case SET_USER_LOGIN:

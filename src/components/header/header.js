@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {CartBlock} from "../cart-block/cart-block";
 import './header.css'
 import {useDispatch, useSelector} from "react-redux";
-import {authUser} from "../../redux/games/actions";
+import {authAdmin, authUser} from "../../redux/games/actions";
 
 export const Header = () => {
 	const {userAuth} = useSelector(state => state.AuthReducer)
@@ -15,6 +15,7 @@ export const Header = () => {
 		e.preventDefault()
 		if (userAuth === true) {
 			dispatch(authUser(false))
+			dispatch(authAdmin(false))
 			navigate('/')
 		}
 	}

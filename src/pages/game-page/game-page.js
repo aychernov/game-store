@@ -6,7 +6,7 @@ import {GameGenre} from "../../components/game-genre";
 import {GameBuy} from "../../components/game-buy";
 
 export const GamePage = (props) => {
-	const {userAuth} = useSelector(state => state.AuthReducer)
+	const {isAdmin} = useSelector(state => state.AuthReducer)
 	const gameItem = useSelector(state => state.GameItemsReducer.currentGame)
 
 	const [inputError, setInputError] = useState(null)
@@ -58,7 +58,7 @@ export const GamePage = (props) => {
 		<span className='textarea'> {areaError}</span>
 </>
 	} else {
-		textarea = <div onDoubleClick={() => userAuth ? setAreaIsEdit(true) : null}>{areaText}</div>;
+		textarea = <div onDoubleClick={() => isAdmin ? setAreaIsEdit(true) : null}>{areaText}</div>;
 	}
 
 let input
@@ -81,7 +81,7 @@ let input
 		<span className='textarea'> {inputError}</span>
 		</>
 	} else {
-		input = <div onDoubleClick={() => userAuth ? setInputIsEdit(true) : null}>{inputText}</div>;
+		input = <div onDoubleClick={() => isAdmin ? setInputIsEdit(true) : null}>{inputText}</div>;
 	}
 
 	if(!gameItem) return  null
