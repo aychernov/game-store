@@ -1,16 +1,16 @@
 import React, {useCallback, useState} from 'react';
 import {CartMenu} from '../cart-menu'
 import {ItemsInCart} from '../items-in-cart'
-import {useSelector} from "react-redux";
-import {calcTotal} from "../utils";
+import {calcTotal} from "../utils/utils";
 import {useNavigate} from "react-router-dom";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 import './cart-block.css'
 
-export const CartBlock = () => {
+export const CartBlock:React.FC = () => {
 	const [IsCartMenuVisible, setIsCartMenuVisible] = useState(false)
 	const navigate = useNavigate()
 
-	const items = useSelector(state => state.shoppingReducer.busket)
+	const items = useTypedSelector(state => state.shoppingReducer.busket)
 	const totalPrice = calcTotal(items)
 
 	const handleClick = useCallback(() => {

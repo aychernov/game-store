@@ -8,8 +8,9 @@ import {OrderPage} from "./pages/order-page";
 import {AboutPage} from "./pages/about-page";
 import {NotFoundPage} from "./pages/not-found-page";
 import {LoginPage} from "./pages/login-page";
+import React from "react";
 
-function App() {
+export const App: React.FC = () => {
   return (
       <Provider store={store}>
       <BrowserRouter>
@@ -28,5 +29,3 @@ function App() {
       </Provider>
   );
 }
-
-export default App;

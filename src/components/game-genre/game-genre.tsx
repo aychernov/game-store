@@ -1,7 +1,11 @@
 import React from 'react';
 import './game-genre.css'
 
-export const GameGenre = ({genre}) => {
+interface IGameGenre{
+	genre: string
+}
+
+export const GameGenre: React.FC<IGameGenre> = ({genre}) => {
 	return (
 			<span className='game-genre'>
 				{genre}

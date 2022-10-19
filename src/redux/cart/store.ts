@@ -1,8 +1,9 @@
-import {ADD_TO_CART, CLEAR_CART, INCREASE_BUCKET_PRICE, REMOVE_FROM_CART} from "./actionsTypes";
+import {IInitialState} from "./interfaces";
 
-const initialState = {gameInfo:
+export const initialState: IInitialState = {gameInfo:
 			[
 				{
+					quantity: 0,
 					image: '/game-covers/forza_5.jpeg',
 					title: 'Forza Horizon 5',
 					genres: ['Гонки', 'Симулятор', 'Открытый мир'],
@@ -12,6 +13,7 @@ const initialState = {gameInfo:
 					description: "Вас ждёт бесконечный калейдоскоп приключений Horizon! Совершайте увлекательные поездки по невероятно красивому и самобытному миру Мексики за рулём величайших автомобилей в истории. Начните своё приключение Horizon уже сегодня, добавив игру в свой список желаний!",
 				},
 				{
+					quantity: 0,
 					image: '/game-covers/battlefield_2042.jpg',
 					title: 'Battlefield 2042',
 					genres: ['Экшен', 'Шутер', 'Война'],
@@ -21,6 +23,7 @@ const initialState = {gameInfo:
 					description: 'Battlefield™ 2042 — это шутер от первого лица, в котором серия возвращается к легендарным масштабным сражениям. В будущем, где царит хаос, адаптируйтесь и процветайте на постоянно меняющихся полях боя благодаря своему отряду и арсеналу новейших технологий.'
 				},
 				{
+					quantity: 0,
 					image: '/game-covers/life_is_strange_true_colors.jpeg',
 					title: 'Life is Strange True Colors',
 					genres: ['Глубокий сюжет', 'Протагонистка'],
@@ -30,6 +33,7 @@ const initialState = {gameInfo:
 					description: 'Алекс Чэнь от всех скрывает своё «проклятие» — сверхъестественную способность считывать сильные эмоции других и влиять на них. Но когда её брат погибает — якобы в результате несчастного случая, — Алекс использует её, чтобы узнать правду.'
 				},
 				{
+					quantity: 0,
 					image: '/game-covers/gta_v.jpeg',
 					title: 'Grand Theft Auto V',
 					genres: ['Открытый мир', 'Экшен'],
@@ -39,6 +43,7 @@ const initialState = {gameInfo:
 					description: 'Grand Theft Auto V для PC позволяет игрокам исследовать знаменитый мир Лос-Сантоса и округа Блэйн в разрешении до 4k и выше с частотой 60 кадров в секунду.'
 				},
 				{
+					quantity: 0,
 					image: '/game-covers/rainbow_siege.jpeg',
 					title: 'Tom Clancy\'s Rainbow Six® Siege',
 					video: 'https://www.youtube.com/embed/6wlvYh0h63k',
@@ -48,6 +53,7 @@ const initialState = {gameInfo:
 					description: 'Tom Clancy\'s Rainbow Six Осада – это продолжение нашумевшего шутера от первого лица, разработанного студией Ubisoft Montreal.'
 				},
 				{
+					quantity: 0,
 					image: '/game-covers/assassins_creed_valhalla.png',
 					title: 'Assassin’s Creed Valhalla',
 					genres: ['Паркур', 'РПГ', 'Открытый мир'],
@@ -58,35 +64,6 @@ const initialState = {gameInfo:
 				},
 			],
 	busket: [],
-	priceBusket: 0
+	priceBusket: 0,
 }
 
-const ShoppinReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case ADD_TO_CART:
-			return {
-				...state,
-				busket: [...state.busket, action.payload]
-			};
-		case REMOVE_FROM_CART:
-			return {
-				...state,
-				busket: [...state.busket.filter(game => game.id !== action.payload.id)],
-				priceBusket: state.priceBusket - action.payload.price
-			};
-		case INCREASE_BUCKET_PRICE:
-			return {
-				...state,
-				priceBusket: state.priceBusket + action.payload
-			}
-		case CLEAR_CART:
-			return {
-				...state,
-				busket: [],
-			}
-		default:
-			return state;
-	}
-};
-
-export {ShoppinReducer};

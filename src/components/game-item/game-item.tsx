@@ -2,9 +2,14 @@ import React from 'react';
 import {GameCover} from '../game-cover'
 import {GameBuy} from '../game-buy'
 import {GameGenre} from '../game-genre'
+import {IGameInfo} from "../../redux/cart/interfaces";
 import './game-item.css'
 
-export const GameItem = ({game}) => {
+interface IGameItem{
+	game: IGameInfo
+}
+
+export const GameItem: React.FC<IGameItem> = ({game}) => {
 
 	return (
 			<div className='game-item'>

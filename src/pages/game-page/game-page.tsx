@@ -1,24 +1,24 @@
 import React, {useState} from 'react';
-import './game-page.css'
-import {useSelector} from "react-redux";
-import {GameCover} from "../../components/game-cover";
 import {GameGenre} from "../../components/game-genre";
 import {GameBuy} from "../../components/game-buy";
+import {GameCover} from "../../components/game-cover";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import './game-page.css'
 
-export const GamePage = (props) => {
-	const {isAdmin} = useSelector(state => state.AuthReducer)
-	const gameItem = useSelector(state => state.GameItemsReducer.currentGame)
+export const GamePage: React.FC = () => {
+	const {isAdmin} = useTypedSelector(state => state.AuthReducer)
+	const {currentGame} = useTypedSelector(state => state.GameItemsReducer)
 
-	const [inputError, setInputError] = useState(null)
-	const [areaError, setAreaError] = useState(null)
+	const [inputError, setInputError] = useState<string | null>(null)
+	const [areaError, setAreaError] = useState<string | null>(null)
 
-	const [inputText, setInputText] = useState(gameItem.title)
-	const [inputIsEdit, setInputIsEdit] = useState(false)
+	const [inputText, setInputText] = useState(currentGame.title)
+	const [inputIsEdit, setInputIsEdit] = useState<boolean>(false)
 
-	const [areaText, setAreaText] = useState(gameItem.description)
-	const [areaIsEdit, setAreaIsEdit] = useState(false)
+	const [areaText, setAreaText] = useState(currentGame.description)
+	const [areaIsEdit, setAreaIsEdit] = useState<boolean>(false)
 
-	const inputChange = e => {
+	const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const charCount = inputText.length;
 		if (inputText.length >= 30) {
 			setInputError(`Превышен лимит! ${charCount + '/' + 30} `)
@@ -28,7 +28,7 @@ export const GamePage = (props) => {
 		}
 	}
 
-	const textAreaChange = e => {
+	const textAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const charCount = areaText.length;
 		if (areaText.length >= 600) {
 			setAreaError(`Превышен лимит! ${charCount + '/' + 600} `)
@@ -47,8 +47,8 @@ export const GamePage = (props) => {
 				value={areaText}
 				onChange={textAreaChange}
 				onBlur={() => setAreaIsEdit(false)}
-				cols='45'
-				rows='10'
+				cols={45}
+				rows={10}
 				onKeyPress={(e) => {
 					if(e.key === 'Enter'){
 						e.preventDefault()
@@ -66,11 +66,11 @@ let input
 		input =
 				<>
 					<input
-				required='true'
+				required={true}
 				value={inputText}
 				onChange={inputChange}
 				onBlur={() => setInputIsEdit(false)}
-				size="30"
+				size={30}
 				onKeyPress={(e) => {
 					if(e.key === 'Enter'){
 						e.preventDefault()
@@ -84,7 +84,7 @@ let input
 		input = <div onDoubleClick={() => isAdmin ? setInputIsEdit(true) : null}>{inputText}</div>;
 	}
 
-	if(!gameItem) return  null
+	if(!currentGame) return  null
 
 	return (
 			<div className='game-page'>
@@ -94,19 +94,19 @@ let input
 						<iframe
 								width='90%'
 								height='400px'
-								src={gameItem.video}
+								src={currentGame.video}
 								title='Youtube Video Player'
 								frameBorder="0"
 						>
 						</iframe>
 					</div>
 					<div className="game-page__right">
-						<GameCover image={gameItem.image}/>
+						<GameCover image={currentGame.image} game={currentGame}/>
 						<p>{textarea}</p>
 						<p className='secondary-text'>Популярные метки этой игры: </p>
-						{gameItem.genres.map((genre) => <GameGenre genre={genre} key={genre}/>)}
+						{currentGame.genres.map((genre: any) => <GameGenre genre={genre} key={genre}/>)}
 						<div className="game-page__buy-game">
-							<GameBuy game={gameItem}/>
+							<GameBuy game={currentGame}/>
 						</div>
 					</div>
 				</div>

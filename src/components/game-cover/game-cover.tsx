@@ -1,10 +1,16 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import {setCurrentGame} from "../../redux/games/actions";
+import {IGameInfo} from "../../redux/cart/interfaces";
 import './game-cover.css'
 
-export const GameCover = ({image = "", game}) => {
+interface IGameCover{
+	game: IGameInfo,
+	image: string
+}
+
+export const GameCover: React.FC<IGameCover> = ({image = "", game}) => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const handleClick = () => {
@@ -16,7 +22,6 @@ export const GameCover = ({image = "", game}) => {
 			<div
 					onClick={handleClick}
 					className='game-cover' style={{backgroundImage: `url(${image})`}}>
-
 			</div>
 	);
 };

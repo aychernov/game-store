@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {authAdmin, authUser, userLoginAction, userPass,} from "../../redux/games/actions";
-import {useNavigate} from "react-router-dom";
-import './login-page.css'
 import {Button} from "../../components/ui/buttons";
+import {useNavigate} from "react-router-dom";
+import {authAdmin, authUser, userLoginAction, userPass,} from "../../redux/games/actions";
+import {useDispatch} from "react-redux";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import './login-page.css'
 
-export const LoginPage = () => {
 
-	const {userLogin, userPassword} = useSelector(state => state.AuthReducer)
+export const LoginPage: React.FC = () => {
+
+	const [error, setError] = useState<string | null>(null)
+	const {userLogin, userPassword} = useTypedSelector(state => state.AuthReducer)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const [error, setError] = useState(null)
 
-	const onClickHandle = (e) => {
+	const onClickHandle = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		e.preventDefault()
 		if (userLogin === 'admin' && userPassword === 'admin') {
 			dispatch(authUser(true))
@@ -25,7 +27,7 @@ export const LoginPage = () => {
 		}
 			else {
 			dispatch(authUser(false))
-			setError('Данные не верные!')
+			setError('Данные не верны')
 		}
 	}
 
@@ -45,8 +47,7 @@ export const LoginPage = () => {
 				/>
 				<Button
 						className='btn btn--login'
-						onClick={onClickHandle}
-						to={'/'}>Login
+						onClick={onClickHandle}>Login
 				</Button>
 				<div className='login-page__error-message'>{error}</div>
 			</form>
