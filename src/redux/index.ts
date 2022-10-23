@@ -4,7 +4,7 @@ import {AuthorizationReducer, GameReducer} from "./games/reducer";
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 // Combine our reducers
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
 	shoppingReducer: ShoppingReducer,
 	GameItemsReducer: GameReducer,
 	AuthReducer: AuthorizationReducer
